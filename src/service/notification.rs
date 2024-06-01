@@ -3,7 +3,7 @@ use std::thread;
 use bambangshop_receiver::{compose_error_response, Result, APP_CONFIG, REQWEST_CLIENT};
 use rocket::{http::Status, log, serde::json::to_string, tokio};
 
-use crate::{controller::notification, model::{notification::Notification, subscriber::SubscriberRequest}, repository::notification::NotificationRepository};
+use crate::{model::{notification::Notification, subscriber::SubscriberRequest}, repository::notification::NotificationRepository};
 
 pub struct NotificationService;
 
@@ -80,6 +80,4 @@ impl NotificationService {
 
         return Ok(subscriber_result);
     }
-
-    
 }
