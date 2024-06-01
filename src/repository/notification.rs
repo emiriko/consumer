@@ -1,5 +1,6 @@
+use std::sync::RwLock;
+
 use lazy_static::lazy_static;
-use rocket::tokio::sync::RwLock;
 
 use crate::model::notification::Notification;
 
@@ -11,5 +12,10 @@ lazy_static! {
 pub struct NotificationRepository;
 
 impl NotificationRepository {
-    
+    pub fn add(notification: Notification) -> Notification {
+        NOTIFICATIONS.write()
+        .unwrap().push(notification.clone());
+
+        return notification;
+    }
 }
