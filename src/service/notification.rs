@@ -3,7 +3,7 @@ use std::thread;
 use bambangshop_receiver::{compose_error_response, Result, APP_CONFIG, REQWEST_CLIENT};
 use rocket::{http::Status, log, serde::json::to_string, tokio};
 
-use crate::model::subscriber::SubscriberRequest;
+use crate::{controller::notification, model::{notification::Notification, subscriber::SubscriberRequest}, repository::notification::NotificationRepository};
 
 pub struct NotificationService;
 
@@ -74,4 +74,12 @@ impl NotificationService {
         let product_type_clone = String::from(product_type);
         return thread::spawn(move || Self::unsubscribe_request(product_type_clone)).join().unwrap();
     }
+
+    pub fn receive_notification(payload: Notification) -> Result<Notification> {
+        let subscriber_result = NotificationRepository::add(payload);
+
+        return Ok(subscriber_result);
+    }
+
+    
 }
