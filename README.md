@@ -44,7 +44,7 @@ standard library, and documentation.
     -   Edit `ROCKET_PORT` in `.env` to `8001`, then execute `cargo run`.
     -   Open new terminal, edit `ROCKET_PORT` in `.env` to `8002`, then execute `cargo run`.
     -   Open another new terminal, edit `ROCKET_PORT` in `.env` to `8003`, then execute `cargo run`.
-    -   
+      
 ## Why Rust?
 
 - **Performance:** Fast and memory-efficient, suitable for critical services, embedded devices, and easily integrate with other languages.
